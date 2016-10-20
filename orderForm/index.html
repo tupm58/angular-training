@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Form</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <form >
+            <ul>
+                <li ng-repeat="item in items" ng-click="toggleActive(item)" ng-class="{active:item.active}">
+                    {{item.name}}  -- {{item.price | currency }}
+                </li>
+            </ul>
+            <div>
+                Total: {{total}}
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl',['$scope',function($scope){
+        $scope.items = [
+            {
+                name : 'fish',
+                price: 10000,
+                active: false
+            },
+            {
+                name : 'apple',
+                price: 2000,
+                active: false
+            },
+            {
+                name : 'pizza',
+                price: 200000,
+                active: false
+            }
+        ];
+        $scope.toggleActive = function(s){
+            s.active = !s.active;
+            $scope.total = 0;
+
+            for (var i = 0; i < $scope.items.length; i++){
+                if ($scope.items[i].active == true){
+                    $scope.total += $scope.items[i].price;
+                }
+            }
+        };
+    }]);
+</script>
+</body>
+</html>
