@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+</head>
+<body ng-app="app">
+<h1>Login page</h1>
+<form ng-controller="myCtrl">
+	<input type="text" ng-model="username">
+	<input type="password" ng-model="password">
+	<button ng-click="login()">Login</button>
+
+	{{showMe}}
+</form>
+
+<script>
+	var app = angular.module('app',[]);
+	app.controller('myCtrl',['$scope',function($scope){
+		$scope.login = function(){
+			if ($scope.username=="tu" && $scope.password=="abc") {
+				$scope.showMe = "success";
+			}else{
+				$scope.showMe = "enter true username,password";
+			}
+		}
+	}]);
+</script>
+</body>
+</html>
