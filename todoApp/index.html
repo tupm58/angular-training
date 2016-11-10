@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="mainCtrl">
+<!--<li><a ui-sref="todo">Todo</a> </li>-->
+<div ng-if="!loggedIn">
+    <li><a ui-sref="signup">Sign up</a></li>
+    <li><a ui-sref="login">Log in</a></li>
+</div>
+<li ng-if="loggedIn"><a ng-click="logOut()">Log out</a></li>
+
+<div ui-view></div>
+
+
+
+</body>
+<script src="app.js"></script>
+<script src="main.controller.js"></script>
+
+<script src="modules/directives/checkPassword.js"></script>
+<script src="modules/todo/todo.js"></script>
+<script src="modules/todo/todo.controller.js"></script>
+
+<script src="modules/signup/signup.js"></script>
+<script src="modules/signup/signup.controller.js"></script>
+
+<script src="modules/login/login.js"></script>
+<script src="modules/login/login.controller.js"></script>
+</html>

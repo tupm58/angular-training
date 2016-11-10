@@ -1,0 +1,31 @@
+My todo
+<style>
+    .strike {
+        text-decoration: line-through;
+    }
+</style>
+<div>
+    <form ng-submit="add()">
+        <input type="text" ng-model="item.title">
+    </form>
+    <ul>
+        <li>
+            <input type="checkbox" ng-model="selectedAll" ng-click="checkAll()">Check All
+        </li>
+        <li ng-repeat="item in todoItems | filter: myFilter">
+            <div>
+                <input type="checkbox" ng-model="item.selected">
+
+                <a href="#"  ng-class="{strike: item.selected}" >{{item.title}}</a>
+                <button ng-click="delete($index)">
+                    X
+                </button>
+            </div>
+        </li>
+    </ul>
+
+    <button ng-click="filterStatus = 'ALL' ">All</button>
+    <button ng-click="filterStatus = 'ACTIVE' ">Active</button>
+    <button ng-click="filterStatus = 'COMPLETED' ">Completed</button>
+    <button ng-click="clearFinish()">Clear finish</button>
+</div>
